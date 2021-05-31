@@ -20,6 +20,16 @@ export class TemplateComponent implements OnInit {
   }
 
   guardar( form: NgForm ) {
+
+    if( form.invalid ) {
+
+      Object.values( form.controls ).forEach ( control => {
+       control.markAllAsTouched();
+      });
+
+      return;
+    }
+
     console.log("SUBMIT disparado: ", form);
     console.log("Nombre: ", form.value['nombre']);
   }
