@@ -22,7 +22,7 @@
         </small>
       </div>
     </div>
-
+    <br>
     <div class="form-group row">
       <label class="col-2 col-form-label">Apellido</label>
       <div class="col-8">
@@ -41,9 +41,8 @@
         </small>
       </div>
     </div>
-
   </div>
-
+  <br>
   <div class="form-group row">
     <label class="col-2 col-form-label">Correo</label>
     <div class="col-8">
@@ -62,9 +61,26 @@
       </small>
     </div>
   </div>
-
-
-
+  <br>
+  <div class="form-group row">
+    <label class="col-2 col-form-label">País</label>
+    <div class="col-8">
+      <select class="form-control"
+        name="pais"
+        [class.is-invalid]="pais.invalid && pais.touched"
+        [disabled]="paises.length === 0"
+        [ngModel]="usuario.pais"
+        required
+        #pais="ngModel">
+        <option *ngFor="let pais of paises"
+                [value]="pais.codigo">
+          {{pais.nombre}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <br>
+  <br>
   <div class="form-group row">
     <label class="col-2 col-form-label">&nbsp;</label>
     <div class="input-group col-md-8">
