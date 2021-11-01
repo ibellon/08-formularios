@@ -14,12 +14,12 @@ export class PaisService {
 getPaises() {
     let arrayPaises :any = [];
     
-    this.http.get("https://restcountries.eu/rest/v2/lang/es")
+    this.http.get("https://restcountries.com/v3.1/lang/spa")
     .pipe( map( (data: any) => data)).subscribe(paises => {
       paises.forEach((pais:any) => {
         //console.log(pais.name);
         //console.log(pais.alpha3Code);
-        arrayPaises.push({"nombre": pais.name, "codigo": pais.alpha3Code});
+        arrayPaises.push({"nombre": pais.name.common, "codigo": pais.cca3});
       })
     });
 
