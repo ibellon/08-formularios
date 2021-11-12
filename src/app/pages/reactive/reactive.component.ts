@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive',
@@ -20,9 +20,9 @@ export class ReactiveComponent implements OnInit {
 
   crearFormulario() {
     this.forma = this.fb.group({
-      nombre: ['Isidro'],
-      apellido: ['Bellón'],
-      email: ['isidro.bellon@gmail.com']
+      nombre: ['', [Validators.required, Validators.minLength(5)]],
+      apellido: ['', Validators.required],
+      email: ['', [Validators.required, Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')]]
     });
   }
 
