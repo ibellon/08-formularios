@@ -6,8 +6,7 @@
 
     <div class="form-group row">
       <label class="col-2 col-form-label">Nombre</label>
-      <div class="col-8">
-
+      <div class="col-3">
         <input class="form-control"
                type="text"
                placeholder="Nombre"
@@ -21,8 +20,7 @@
     <br>
     <div class="form-group row">
       <label class="col-2 col-form-label">Apellido</label>
-      <div class="col-8">
-
+      <div class="col-3">
         <input class="form-control"
                type="text"
                placeholder="Apellido"
@@ -38,8 +36,7 @@
   <br>
   <div class="form-group row">
     <label class="col-2 col-form-label">Correo</label>
-    <div class="col-8">
-
+    <div class="col-3">
       <input class="form-control"
              type="email"
              placeholder="Correo electrónico"
@@ -50,7 +47,34 @@
       </small>
     </div>
   </div>
-
+  <br>
+  <div class="form-group row" formGroupName="domicilio">
+      <label class="col-2 col-form-label">Domicilio</label>
+      <div class="col">
+        <input class="form-control"
+               type="text"
+               placeholder="Provincia"
+               formControlName="provincia">
+      </div>
+      <div class="col">
+        <input class="form-control"
+               type="text"
+               placeholder="Municipio"
+               formControlName="municipio">
+      </div>
+      <div class="col">
+               <input class="form-control"
+               type="text"
+               placeholder="Código Postal"
+               formControlName="codigoPostal">
+      </div>
+      <div class="col">
+        <input class="form-control"
+               type="text"
+               placeholder="Dirección"
+               formControlName="direccion">
+      </div>
+  </div>
   <br>
 
   <div class="form-group row">

@@ -34,7 +34,13 @@ export class ReactiveComponent implements OnInit {
     this.forma = this.fb.group({
       nombre: ['', [Validators.required, Validators.minLength(5)]],
       apellido: ['', Validators.required],
-      email: ['', [Validators.required, Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')]]
+      email: ['', [Validators.required, Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')]],
+      domicilio: this.fb.group({
+        provincia: ['', Validators.required],
+        municipio: ['', Validators.required],
+        codigoPostal: ['', Validators.required],
+        direccion: ['', Validators.required]
+      })
     });
   }
 
@@ -44,7 +50,7 @@ export class ReactiveComponent implements OnInit {
 
         return Object.values( this.forma.controls ).forEach ( control => {
         control.markAllAsTouched();
-        
+
       });
     }
   }
