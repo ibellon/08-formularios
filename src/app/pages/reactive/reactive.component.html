@@ -11,7 +11,11 @@
         <input class="form-control"
                type="text"
                placeholder="Nombre"
-               formControlName="nombre">
+               formControlName="nombre"
+               [class.is-invalid]="nombreNoValido">
+        <small *ngIf="nombreNoValido" class="text-danger">
+          Nombre no válido
+        </small>
       </div>
     </div>
     <br>
@@ -22,7 +26,11 @@
         <input class="form-control"
                type="text"
                placeholder="Apellido"
-               formControlName="apellido">
+               formControlName="apellido"
+               [class.is-invalid]="apellidoNoValido">
+          <small *ngIf="nombreNoValido" class="text-danger">
+                Apellido no válido
+          </small>
       </div>
     </div>
 
@@ -35,7 +43,11 @@
       <input class="form-control"
              type="email"
              placeholder="Correo electrónico"
-             formControlName="email">
+             formControlName="email"
+             [class.is-invalid]="emailNoValido">
+      <small *ngIf="emailNoValido" class="text-danger">
+              Email no válido
+      </small>
     </div>
   </div>
 
