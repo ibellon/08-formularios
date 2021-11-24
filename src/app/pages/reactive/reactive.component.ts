@@ -12,6 +12,7 @@ export class ReactiveComponent implements OnInit {
 
   constructor(private fb: FormBuilder) { 
     this.crearFormulario();
+    this.cargarDatosFormulario();
   }
 
   ngOnInit(): void {
@@ -28,6 +29,22 @@ export class ReactiveComponent implements OnInit {
 
   get emailNoValido() {
     return this.forma.get('email')?.invalid && this.forma.get('email')?.touched;
+  }
+
+  get provinciaNoValido() {
+    return this.forma.get('domicilio.provincia')?.invalid && this.forma.get('domicilio.provincia')?.touched;
+  }
+
+  get municipioNoValido() {
+    return this.forma.get('domicilio.municipio')?.invalid && this.forma.get('domicilio.municipio')?.touched;
+  }
+
+  get codigoPostalNoValido() {
+    return this.forma.get('domicilio.codigoPostal')?.invalid && this.forma.get('domicilio.codigoPostal')?.touched;
+  }
+
+  get direccionNoValido() {
+    return this.forma.get('domicilio.direccion')?.invalid && this.forma.get('domicilio.direccion')?.touched;
   }
 
   crearFormulario() {
@@ -47,12 +64,28 @@ export class ReactiveComponent implements OnInit {
   guardar() {
     console.log(this.forma);
     if( this.forma.invalid ) {
-
         return Object.values( this.forma.controls ).forEach ( control => {
-        control.markAllAsTouched();
+          if(control instanceof FormGroup) {
+            Object.values( this.forma.controls ).forEach (control =>
+              control.markAllAsTouched());
+          }
+          else {
+            control.markAllAsTouched();
+          }
+        
 
       });
     }
+  }
+
+  cargarDatosFormulario(){
+    this.forma.reset(
+      {
+        "nombre": "Baltasar",
+        "apellido": "Gracián",
+        "email": "baltasar.gracian@gmail.com"
+      }
+    );
   }
 
 }

@@ -54,25 +54,41 @@
         <input class="form-control"
                type="text"
                placeholder="Provincia"
-               formControlName="provincia">
+               formControlName="provincia"
+               [class.is-invalid]="provinciaNoValido">
+        <small *ngIf="provinciaNoValido" class="text-danger">
+                Provincia no válida
+        </small>
       </div>
       <div class="col">
         <input class="form-control"
                type="text"
                placeholder="Municipio"
-               formControlName="municipio">
+               formControlName="municipio"
+               [class.is-invalid]="municipioNoValido">
+        <small *ngIf="municipioNoValido" class="text-danger">
+                Municipio no válido
+        </small>
       </div>
       <div class="col">
-               <input class="form-control"
+        <input class="form-control"
                type="text"
                placeholder="Código Postal"
-               formControlName="codigoPostal">
+               formControlName="codigoPostal"
+               [class.is-invalid]="codigoPostalNoValido">
+        <small *ngIf="codigoPostalNoValido" class="text-danger">
+                Código Postal no válido
+        </small>    
       </div>
       <div class="col">
         <input class="form-control"
                type="text"
                placeholder="Dirección"
-               formControlName="direccion">
+               formControlName="direccion"
+               [class.is-invalid]="direccionNoValido">
+        <small *ngIf="direccionNoValido" class="text-danger">
+                Dirección no válida
+        </small>
       </div>
   </div>
   <br>
