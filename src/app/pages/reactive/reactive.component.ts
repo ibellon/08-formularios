@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive',
@@ -11,7 +11,7 @@ export class ReactiveComponent implements OnInit {
   forma: FormGroup;
 
   constructor(private fb: FormBuilder) { 
-    this.crearFormulario();
+    this.forma = this.crearFormulario();
     this.cargarDatosFormulario();
   }
 
@@ -47,8 +47,12 @@ export class ReactiveComponent implements OnInit {
     return this.forma.get('domicilio.direccion')?.invalid && this.forma.get('domicilio.direccion')?.touched;
   }
 
+  get pasatiempos() {
+    return this.forma.get('pasatiempos') as FormArray;
+  }
+
   crearFormulario() {
-    this.forma = this.fb.group({
+    return this.forma = this.fb.group({
       nombre: ['', [Validators.required, Validators.minLength(5)]],
       apellido: ['', Validators.required],
       email: ['', [Validators.required, Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')]],
@@ -57,7 +61,8 @@ export class ReactiveComponent implements OnInit {
         municipio: ['', Validators.required],
         codigoPostal: ['', Validators.required],
         direccion: ['', Validators.required]
-      })
+      }),
+      pasatiempos: this.fb.array([[], [], [], []])
     });
   }
 
@@ -72,8 +77,6 @@ export class ReactiveComponent implements OnInit {
           else {
             control.markAllAsTouched();
           }
-        
-
       });
     }
   }

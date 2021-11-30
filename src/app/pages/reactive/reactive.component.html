@@ -26,7 +26,7 @@
                placeholder="Apellido"
                formControlName="apellido"
                [class.is-invalid]="apellidoNoValido">
-          <small *ngIf="nombreNoValido" class="text-danger">
+          <small *ngIf="apellidoNoValido" class="text-danger">
                 Apellido no válido
           </small>
       </div>
@@ -92,7 +92,35 @@
       </div>
   </div>
   <br>
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>ID</th>
+            <th>Pasatiempo</th>
+            <th>Borrar</th>
+          </tr>
+        </thead>
+        <tbody formArrayName="pasatiempos">
+          <tr *ngFor="let item of pasatiempos.controls; let i = index">
+            <td>{{i+1}}</td>
+            <td>
+              <input class="form-control" type="text" [formControlName]="i">
+            </td>
+            <td>
+              <button class="btn btn-danger">Borrar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
+      <button class="btn btn-primary mt-3 mb-5 btn-block" type="button">
+          + Agregar
+      </button>
+    </div>
+  </div>
+  <br>
   <div class="form-group row">
     <label class="col-2 col-form-label">&nbsp;</label>
     <div class="input-group col-md-8">
