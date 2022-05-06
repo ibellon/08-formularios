@@ -33,6 +33,16 @@ export class ReactiveComponent implements OnInit {
     return this.forma.get('email')?.invalid && this.forma.get('email')?.touched;
   }
 
+  get pass1NoValido() {
+    return this.forma.get('pass1')?.invalid && this.forma.get('pass1')?.touched;
+  }
+
+  get pass2NoValido() {
+    const pass1 = this.forma.get('pass1').value;
+    const pass2 = this.forma.get('pass2').value;
+    return (pass1 === pass2)? false: true;
+  }
+
   get provinciaNoValido() {
     return this.forma.get('domicilio.provincia')?.invalid && this.forma.get('domicilio.provincia')?.touched;
   }
@@ -58,6 +68,8 @@ export class ReactiveComponent implements OnInit {
       nombre: ['', [Validators.required, Validators.minLength(5), this.validadores.noIsidro]],
       apellido: ['', Validators.required],
       email: ['', [Validators.required, Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')]],
+      pass1: ['', Validators.required],
+      pass2: ['', Validators.required],
       domicilio: this.fb.group({
         provincia: ['', Validators.required],
         municipio: ['', Validators.required],
