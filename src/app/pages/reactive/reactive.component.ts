@@ -33,6 +33,10 @@ export class ReactiveComponent implements OnInit {
     return this.forma.get('email')?.invalid && this.forma.get('email')?.touched;
   }
 
+  get usuarioNoValido() {
+    return this.forma.get('usuario')?.invalid && this.forma.get('usuario')?.touched;
+  }
+
   get pass1NoValido() {
     return this.forma.get('pass1')?.invalid && this.forma.get('pass1')?.touched;
   }
@@ -68,6 +72,7 @@ export class ReactiveComponent implements OnInit {
       nombre: ['', [Validators.required, Validators.minLength(5), this.validadores.noIsidro]],
       apellido: ['', Validators.required],
       email: ['', [Validators.required, Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')]],
+      usuario: ['', ,this.validadores.existeUsuario],
       pass1: ['', Validators.required],
       pass2: ['', Validators.required],
       domicilio: this.fb.group({
