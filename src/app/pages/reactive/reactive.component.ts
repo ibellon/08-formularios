@@ -15,6 +15,7 @@ export class ReactiveComponent implements OnInit {
               private validadores:ValidadoresService) { 
     this.forma = this.crearFormulario();
     this.cargarDatosFormulario();
+    this.cargarListeners();
   }
 
   ngOnInit(): void {
@@ -83,6 +84,18 @@ export class ReactiveComponent implements OnInit {
       }),
       pasatiempos: this.fb.array([])
     });
+  }
+
+  cargarListeners() {
+
+    this.forma.get('usuario').valueChanges.subscribe( valor => {
+      console.log("Valor: ", valor);
+    });
+
+    this.forma.get('usuario').statusChanges.subscribe( estado => {
+      console.log("Estado: ", estado);
+    })
+
   }
 
   agregarPasatiempo(){
